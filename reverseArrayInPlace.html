@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reverse Array in Place</title>
+</head>
+
+<body>
+    <script>
+        function reverseArrayInPlace(arr) {
+            for (var i = 0; i < arr.length/2; i++) {
+                var tempArr = arr[i];
+                arr[i] = arr[arr.length-1 -i];
+                arr[arr.length-1 -i] = tempArr;
+                
+            }
+            return arr;
+        }
+        console.log(reverseArrayInPlace([1, 2, 3, 4, 5]));
+        console.log(reverseArrayInPlace(['this', 'is', 'an', 'array', 'of', 'words']));
+    </script>
+</body>
+
+</html>
