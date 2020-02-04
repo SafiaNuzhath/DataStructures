@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fibonacci</title>
+</head>
+
+<body>
+    <script>
+        // Memoization --> Memoized Fibonacci 
+        // Time complexity O(n) - linear
+
+        function fibMemo(index, cache) {
+            // index: index of number in fibonacci sequence
+            // cache: an array used as memory
+
+            cache = cache || [];
+            if (cache[index]) return cache[index];
+            else {
+                if (index < 3) return 1;
+                else {
+                    cache[index] = fibMemo(index - 1, cache) + fibMemo(index - 2, cache);
+                }
+            }
+
+            return cache[index];
+
+        }
+        console.log(fibMemo(20));
+
+        // Using while loop
+        function fibonacci(num) {
+            var a = 1, b = 0, temp;
+            var list = [];
+            while (num >= 0) {
+                temp = a;
+                a = a + b;
+                b = temp;
+                num--;
+            }
+
+            return b;
+        }
+
+        console.log(fibonacci(10));
+
+        // To print the fib series
+        fib = function (numMax) {
+            for (var fibArray = [0, 1], i = 0, j = 1, k = 0; k < numMax; i = j, j = x, k++) {
+                x = i + j;
+                fibArray.push(x);
+            }
+            console.log(fibArray);
+        }
+
+        fib(10);
+
+        // The below code runs into O(2^n) time complexity ,
+        //  which is not ideal for working, below example is just for knowledge -
+
+        // function fibonacci(position) {
+        //     if( position < 3) return 1;
+        //     else return fibonacci(position -1) + fibonacci(position - 2);
+        // }
+        // console.log(fibonacci(10));
+        // fibonacci(4) => returns 3
+
+        // Program to get the fibonacci numbers printed -
+        // const fibonacci = (() => {
+        //     const seq = [];
+        //     return (n, num) => {
+        //         if (n === num) return seq;
+        //         seq.length < 2 ? seq.push(n) : seq.push(seq[n - 2] + seq[n - 1]);
+        //     };
+        // })();
+        // const getSequence = (num, i = 0) => {
+        //     let r;
+        //     if (r = fibonacci(i, num)) return r;
+        //     return getSequence(num, ++i);
+        // }
+        // console.log(getSequence(10)); 
+    </script>
+</body>
+
+</html>
