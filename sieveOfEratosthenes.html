@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sieve of Eratosthenes</title>
+</head>
+<body>
+    <script>
+        // return all prime numbers upto 'num' in an array
+
+        function sieveOfEratosthenes(num) {
+            var primes = [];
+            for (let i = 0; i < num; i++) {
+                primes[i] = true;
+            }
+            primes[0] = false;
+            primes[1] = false;
+
+            for(var i = 2; i<= Math.sqrt(num); i++){
+                for(var j =2; (j * i) <= num; j++){
+                    primes[i * j] = false;
+                }
+            }
+            var resultsArray = [];
+
+            for (let i = 0; i < primes.length; i++) {
+                if(primes[i]) resultsArray.push(i);
+            }
+            return resultsArray;
+        }
+
+        console.log(sieveOfEratosthenes(20));
+
+        // [2, 3, 5, 7, 11, 13, 17, 19]
+        </script>
+</body>
+</html>
