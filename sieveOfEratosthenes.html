@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sieve of Eratosthenes</title>
 </head>
+
 <body>
     <script>
         // return all prime numbers upto 'num' in an array
@@ -18,15 +20,15 @@
             primes[0] = false;
             primes[1] = false;
 
-            for(var i = 2; i<= Math.sqrt(num); i++){
-                for(var j =2; (j * i) <= num; j++){
+            for (var i = 2; i <= Math.sqrt(num); i++) {
+                for (var j = 2; (j * i) <= num; j++) {
                     primes[i * j] = false;
                 }
             }
             var resultsArray = [];
 
             for (let i = 0; i < primes.length; i++) {
-                if(primes[i]) resultsArray.push(i);
+                if (primes[i]) resultsArray.push(i);
             }
             return resultsArray;
         }
@@ -34,6 +36,26 @@
         console.log(sieveOfEratosthenes(20));
 
         // [2, 3, 5, 7, 11, 13, 17, 19]
-        </script>
+
+        // Another way
+        function enterNumber(params) {
+            var primeArr = [];
+            for (var i = 2; i <= params; i++) {
+                var isPrime = true;
+                for (var j = 2; j < i; j++) {
+                    if (i % j === 0 && i !== j) {
+                        isPrime = false;
+                    }
+                }
+                if (isPrime === true) {
+                    primeArr.push(i);
+                }   
+            }
+            return primeArr;
+        }
+        console.log(enterNumber(10));
+
+    </script>
 </body>
+
 </html>
