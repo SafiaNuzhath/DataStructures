@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Binary Search</title>
+</head>
+
+<body>
+    <script>
+        //Search for a given value(key) inside of a list (numArray)
+        //Runs in O(log n) run time - very performant
+        // Assuming a sorted array as input
+        function binarySearch(numArray, key) {
+            var middleIndex = Math.floor(numArray.length / 2);
+            var middleEle = numArray[middleIndex];
+
+            if (middleEle === key) return true;
+            else if (middleEle < key && numArray.length > 1) {
+                return binarySearch(numArray.splice(middleIndex, numArray.length), key);
+            } else if (middleEle > key && numArray.length > 1) {
+                return binarySearch(numArray.splice(0, middleIndex), key);
+            }
+            else {
+                return false;
+            }
+
+        }
+
+        console.log(binarySearch([5, 7, 33, 54, 56, 70, 71, 80, 91], 56));
+    </script>
+</body>
+
+</html>
