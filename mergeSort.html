@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Merge Sort</title>
+</head>
+
+<body>
+    <script>
+        function mergeSort(arr) {
+            // take in a single, unsorted array as a parameter
+            // split the array into two halves
+            if (arr.length < 2) return arr;
+
+            var middleIndex = Math.floor(arr.length / 2);
+            var arr1 = arr.slice(0, middleIndex);
+            var arr2 = arr.slice(middleIndex);
+
+            return merge(mergeSort(arr1), mergeSort(arr2));
+
+        }
+        function merge(array1, array2) {
+            // takes in two sorted arrays as parameters
+            // merges those sorted arrays into one sorted array
+            //  returns one sorted array
+            var sortedArr = [];
+
+            while (array1.length && array2.length) {
+                var minElem;
+                if (array1[0] < array2[0]) minElem = array1.shift();
+                else minElem = array2.shift();
+                sortedArr.push(minElem);
+            }
+            if (array1.length) sortedArr = sortedArr.concat(array1);
+            else if (array2.length) sortedArr = sortedArr.concat(array2);
+
+            return sortedArr;
+        }
+
+        console.log(mergeSort([100, 200, 1, 3, 2,7,4, 90, 50]));
+
+    </script>
+</body>
+
+</html>
